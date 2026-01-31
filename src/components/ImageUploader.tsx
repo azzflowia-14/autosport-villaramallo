@@ -99,7 +99,8 @@ export function ImageUploader({
   const removeImage = async (index: number) => {
     const imageUrl = images[index]
 
-    if (imageUrl.startsWith('/uploads/')) {
+    // Eliminar de Cloudinary o del servidor local
+    if (imageUrl.startsWith('/uploads/') || imageUrl.includes('cloudinary.com')) {
       try {
         await fetch('/api/upload/delete', {
           method: 'DELETE',
@@ -107,7 +108,7 @@ export function ImageUploader({
           body: JSON.stringify({ url: imageUrl }),
         })
       } catch (err) {
-        console.error('Error eliminando imagen del servidor:', err)
+        console.error('Error eliminando imagen:', err)
       }
     }
 

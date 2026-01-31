@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { writeFile, mkdir } from 'fs/promises'
-import path from 'path'
 import { auth } from '@/lib/auth'
+import cloudinary from '@/lib/cloudinary'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/heic', 'image/heif']
-const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
-const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'vehiculos')
+const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB (Cloudinary optimiza)
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,33 +25,47 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    await mkdir(UPLOAD_DIR, { recursive: true })
-
     const uploadedUrls: string[] = []
     const errors: string[] = []
 
     for (const file of files) {
-      if (!ALLOWED_TYPES.includes(file.type)) {
-        errors.push(`${file.name}: Tipo de archivo no permitido`)
-        continue
+      // Validar tipo (permitir también cuando el móvil no reporta tipo correcto)
+      if (file.type && !ALLOWED_TYPES.includes(file.type)) {
+        // Verificar por extensión como fallback
+        const ext = file.name.split('.').pop()?.toLowerCase()
+        if (!['jpg', 'jpeg', 'png', 'webp', 'heic', 'heif'].includes(ext || '')) {
+          errors.push(`${file.name}: Tipo de archivo no permitido`)
+          continue
+        }
       }
 
       if (file.size > MAX_FILE_SIZE) {
-        errors.push(`${file.name}: Archivo muy grande (max 5MB)`)
+        errors.push(`${file.name}: Archivo muy grande (max 10MB)`)
         continue
       }
 
-      const timestamp = Date.now()
-      const randomString = Math.random().toString(36).substring(2, 8)
-      const extension = file.name.split('.').pop()?.toLowerCase() || 'jpg'
-      const fileName = `${timestamp}-${randomString}.${extension}`
+      try {
+        // Convertir archivo a base64
+        const bytes = await file.arrayBuffer()
+        const buffer = Buffer.from(bytes)
+        const base64 = buffer.toString('base64')
+        const dataUri = `data:${file.type || 'image/jpeg'};base64,${base64}`
 
-      const bytes = await file.arrayBuffer()
-      const buffer = Buffer.from(bytes)
-      const filePath = path.join(UPLOAD_DIR, fileName)
+        // Subir a Cloudinary
+        const result = await cloudinary.uploader.upload(dataUri, {
+          folder: 'concesionaria/vehiculos',
+          transformation: [
+            { width: 1200, height: 900, crop: 'limit' },
+            { quality: 'auto' },
+            { format: 'auto' }
+          ]
+        })
 
-      await writeFile(filePath, buffer)
-      uploadedUrls.push(`/uploads/vehiculos/${fileName}`)
+        uploadedUrls.push(result.secure_url)
+      } catch (uploadError) {
+        console.error('Error subiendo a Cloudinary:', uploadError)
+        errors.push(`${file.name}: Error al subir`)
+      }
     }
 
     return NextResponse.json({
