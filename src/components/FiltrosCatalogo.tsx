@@ -2,7 +2,6 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useState, useEffect, useRef } from 'react'
-import { Select } from './ui/Select'
 import { tiposVehiculo, estadosVehiculo, transmisiones, combustibles, marcas } from '@/lib/utils'
 
 export function FiltrosCatalogo() {
@@ -58,82 +57,122 @@ export function FiltrosCatalogo() {
   const hasFilters = searchParams.toString().length > 0
 
   return (
-    <div className="bg-dark-800 p-6 rounded-xl border border-dark-700">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-white">Filtros</h2>
-        {hasFilters && (
-          <button
-            onClick={handleClearFilters}
-            className="text-sm text-autosport-red hover:text-autosport-red-light"
+    <div className="bg-dark-800 p-4 rounded-xl border border-dark-700">
+      <div className="flex flex-wrap items-end gap-3">
+        {/* Marca */}
+        <div className="flex-1 min-w-[140px]">
+          <label className="block text-xs font-medium text-gray-400 mb-1">Marca</label>
+          <select
+            value={searchParams.get('marca') || ''}
+            onChange={(e) => handleFilterChange('marca', e.target.value)}
+            className="w-full bg-dark-700 border border-dark-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-autosport-red transition-colors"
           >
-            Limpiar filtros
-          </button>
-        )}
-      </div>
-
-      <div className="space-y-4">
-        <Select
-          label="Marca"
-          options={marcas.map(m => ({ value: m, label: m }))}
-          value={searchParams.get('marca') || ''}
-          onChange={(e) => handleFilterChange('marca', e.target.value)}
-        />
-
-        <Select
-          label="Tipo"
-          options={tiposVehiculo}
-          value={searchParams.get('tipo') || ''}
-          onChange={(e) => handleFilterChange('tipo', e.target.value)}
-        />
-
-        <Select
-          label="Estado"
-          options={estadosVehiculo}
-          value={searchParams.get('estado') || ''}
-          onChange={(e) => handleFilterChange('estado', e.target.value)}
-        />
-
-        <Select
-          label="Transmisión"
-          options={transmisiones}
-          value={searchParams.get('transmision') || ''}
-          onChange={(e) => handleFilterChange('transmision', e.target.value)}
-        />
-
-        <Select
-          label="Combustible"
-          options={combustibles}
-          value={searchParams.get('combustible') || ''}
-          onChange={(e) => handleFilterChange('combustible', e.target.value)}
-        />
-
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-1">Precio máximo</label>
-          <input
-            type="number"
-            placeholder="Ej: 500000"
-            value={precioMax}
-            onChange={(e) => {
-              setPrecioMax(e.target.value)
-              handleInputFilterChange('precioMax', e.target.value)
-            }}
-            className="w-full bg-dark-700 border border-dark-600 rounded-lg px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-autosport-red transition-colors"
-          />
+            <option value="">Todas</option>
+            {marcas.map(m => (
+              <option key={m} value={m}>{m}</option>
+            ))}
+          </select>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-1">Año mínimo</label>
+        {/* Tipo */}
+        <div className="flex-1 min-w-[140px]">
+          <label className="block text-xs font-medium text-gray-400 mb-1">Tipo</label>
+          <select
+            value={searchParams.get('tipo') || ''}
+            onChange={(e) => handleFilterChange('tipo', e.target.value)}
+            className="w-full bg-dark-700 border border-dark-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-autosport-red transition-colors"
+          >
+            <option value="">Todos</option>
+            {tiposVehiculo.map(t => (
+              <option key={t.value} value={t.value}>{t.label}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Estado */}
+        <div className="flex-1 min-w-[120px]">
+          <label className="block text-xs font-medium text-gray-400 mb-1">Estado</label>
+          <select
+            value={searchParams.get('estado') || ''}
+            onChange={(e) => handleFilterChange('estado', e.target.value)}
+            className="w-full bg-dark-700 border border-dark-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-autosport-red transition-colors"
+          >
+            <option value="">Todos</option>
+            {estadosVehiculo.map(e => (
+              <option key={e.value} value={e.value}>{e.label}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Transmisión */}
+        <div className="flex-1 min-w-[140px]">
+          <label className="block text-xs font-medium text-gray-400 mb-1">Transmisión</label>
+          <select
+            value={searchParams.get('transmision') || ''}
+            onChange={(e) => handleFilterChange('transmision', e.target.value)}
+            className="w-full bg-dark-700 border border-dark-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-autosport-red transition-colors"
+          >
+            <option value="">Todas</option>
+            {transmisiones.map(t => (
+              <option key={t.value} value={t.value}>{t.label}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Combustible */}
+        <div className="flex-1 min-w-[140px]">
+          <label className="block text-xs font-medium text-gray-400 mb-1">Combustible</label>
+          <select
+            value={searchParams.get('combustible') || ''}
+            onChange={(e) => handleFilterChange('combustible', e.target.value)}
+            className="w-full bg-dark-700 border border-dark-600 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-autosport-red transition-colors"
+          >
+            <option value="">Todos</option>
+            {combustibles.map(c => (
+              <option key={c.value} value={c.value}>{c.label}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Año mínimo */}
+        <div className="w-[100px]">
+          <label className="block text-xs font-medium text-gray-400 mb-1">Año mín.</label>
           <input
             type="number"
-            placeholder="Ej: 2020"
+            placeholder="2020"
             value={anioMin}
             onChange={(e) => {
               setAnioMin(e.target.value)
               handleInputFilterChange('anioMin', e.target.value)
             }}
-            className="w-full bg-dark-700 border border-dark-600 rounded-lg px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-autosport-red transition-colors"
+            className="w-full bg-dark-700 border border-dark-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-autosport-red transition-colors"
           />
         </div>
+
+        {/* Precio máximo */}
+        <div className="w-[120px]">
+          <label className="block text-xs font-medium text-gray-400 mb-1">Precio máx.</label>
+          <input
+            type="number"
+            placeholder="500000"
+            value={precioMax}
+            onChange={(e) => {
+              setPrecioMax(e.target.value)
+              handleInputFilterChange('precioMax', e.target.value)
+            }}
+            className="w-full bg-dark-700 border border-dark-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-autosport-red transition-colors"
+          />
+        </div>
+
+        {/* Limpiar filtros */}
+        {hasFilters && (
+          <button
+            onClick={handleClearFilters}
+            className="px-4 py-2 text-sm text-autosport-red hover:text-white hover:bg-autosport-red rounded-lg border border-autosport-red transition-colors"
+          >
+            Limpiar
+          </button>
+        )}
       </div>
     </div>
   )

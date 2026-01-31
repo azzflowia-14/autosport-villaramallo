@@ -6,43 +6,17 @@ export default function CotizarPage() {
   return (
     <div className="min-h-screen">
       {/* Hero con Simulador */}
-      <section className="relative bg-black overflow-hidden py-12 lg:py-20">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-radial from-autosport-red/20 via-autosport-red/5 to-transparent rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Texto */}
-          <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl font-bebas tracking-wide text-white mb-4">
-              Financiá tu próximo auto
-            </h1>
-            <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
-              Calculá tu cuota en segundos. Elegí el auto, ingresá cuánto tenés, y te mostramos cuánto necesitás financiar.
+      <section className="relative bg-dark-900 overflow-hidden py-6 lg:py-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header igual que catálogo */}
+          <div className="mb-6">
+            <h1 className="text-3xl md:text-4xl font-bebas tracking-wide text-white mb-1">Cotizador de Financiación</h1>
+            <p className="text-gray-400 text-sm">
+              Elegí el auto, ingresá tu entrega y calculá las cuotas
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                Sin requisitos complicados
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                Cuotas fijas
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                Aprobación rápida
-              </div>
-            </div>
           </div>
 
-          {/* Simulador - ancho completo */}
+          {/* Simulador */}
           <SimuladorFinanciamiento />
         </div>
       </section>

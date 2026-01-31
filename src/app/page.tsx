@@ -31,13 +31,20 @@ async function getVehiculosUsados() {
   })
 }
 
-const highlights = [
-  { icon: '📋', label: 'Cotizador', href: '/cotizar', color: 'from-autosport-red to-red-700' },
-  { icon: '🚗', label: 'BYD', href: '/catalogo?marca=BYD', color: 'from-dark-600 to-dark-700' },
-  { icon: '📝', label: 'Transferencia', href: '/contacto', color: 'from-dark-600 to-dark-700' },
-  { icon: '📖', label: 'Catálogo', href: '/catalogo', color: 'from-dark-600 to-dark-700' },
-  { icon: '✨', label: '0KM', href: '/catalogo?estado=nuevo', color: 'from-dark-600 to-dark-700' },
-]
+// Componente separador moderno
+function SectionDivider() {
+  return (
+    <div className="relative h-16 bg-dark-900 overflow-hidden">
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-full max-w-xs flex items-center gap-4">
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-dark-600 to-dark-600"></div>
+          <div className="w-2 h-2 rotate-45 bg-autosport-red"></div>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-dark-600 to-dark-600"></div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default async function HomePage() {
   const [vehiculosDestacados, vehiculos0KM, vehiculosUsados] = await Promise.all([
@@ -56,29 +63,29 @@ export default async function HomePage() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
           <div className="text-center">
-            {/* Logo grande */}
-            <div className="inline-block mb-4 p-1 rounded-full bg-gradient-to-br from-white/15 via-gray-300/5 to-white/5 shadow-[0_0_20px_rgba(255,255,255,0.1)] ring-1 ring-white/15">
+            {/* Logo */}
+            <div className="inline-block mb-3 p-1 rounded-full bg-gradient-to-br from-white/15 via-gray-300/5 to-white/5 shadow-[0_0_20px_rgba(255,255,255,0.1)] ring-1 ring-white/15">
               <Image
                 src="/images/logo.png"
                 alt="Autosport Villa Ramallo"
-                width={280}
-                height={280}
-                className="w-56 h-56 md:w-72 md:h-72 object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                width={200}
+                height={200}
+                className="w-40 h-40 md:w-48 md:h-48 object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
                 priority
               />
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bebas tracking-wide mb-2 text-white">
+            <h1 className="text-3xl md:text-5xl font-bebas tracking-wide mb-1 text-white">
               Villa Ramallo
             </h1>
-            <p className="text-xl text-gray-400 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
               Venta de vehículos <span className="text-autosport-red font-bold">0KM</span> y <span className="text-autosport-red font-bold">usados</span>.
               Financiación propia, transferencias y el mejor servicio.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/catalogo">
                 <Button size="lg">
                   Ver Catálogo
@@ -94,29 +101,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Highlights - Similar a Instagram Stories */}
-      <section className="bg-dark-800 py-8 border-y border-dark-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center gap-6 md:gap-10 overflow-x-auto pb-2">
-            {highlights.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="flex flex-col items-center group flex-shrink-0"
-              >
-                <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br ${item.color} p-[3px] group-hover:scale-110 transition-transform duration-300`}>
-                  <div className="w-full h-full rounded-full bg-dark-800 flex items-center justify-center text-2xl md:text-3xl">
-                    {item.icon}
-                  </div>
-                </div>
-                <span className="mt-2 text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
-                  {item.label}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SectionDivider />
 
       {/* Vehículos Destacados */}
       {vehiculosDestacados.length > 0 && (
@@ -140,6 +125,8 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      <SectionDivider />
 
       {/* 0KM Section */}
       {vehiculos0KM.length > 0 && (
@@ -166,6 +153,8 @@ export default async function HomePage() {
         </section>
       )}
 
+      <SectionDivider />
+
       {/* Usados Section */}
       {vehiculosUsados.length > 0 && (
         <section className="bg-dark-900 py-16">
@@ -188,6 +177,8 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      <SectionDivider />
 
       {/* Servicios */}
       <section className="bg-dark-800 py-16 border-t border-dark-700">
