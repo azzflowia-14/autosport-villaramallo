@@ -4,6 +4,9 @@ import { prisma } from '@/lib/prisma'
 import { VehiculoCard } from '@/components/VehiculoCard'
 import { Button } from '@/components/ui/Button'
 
+// Forzar renderizado dinámico (no estático)
+export const dynamic = 'force-dynamic'
+
 async function getVehiculosDestacados() {
   return prisma.vehiculo.findMany({
     where: { destacado: true, activo: true },

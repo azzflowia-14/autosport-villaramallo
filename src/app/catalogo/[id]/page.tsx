@@ -5,6 +5,8 @@ import { formatPrice, formatKilometraje } from '@/lib/utils'
 import { Button } from '@/components/ui/Button'
 import { GaleriaVehiculo } from '@/components/GaleriaVehiculo'
 
+export const dynamic = 'force-dynamic'
+
 async function getVehiculo(id: number) {
   return prisma.vehiculo.findUnique({
     where: { id, activo: true },

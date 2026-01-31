@@ -3,6 +3,8 @@ import { VehiculoCard } from '@/components/VehiculoCard'
 import { FiltrosCatalogo } from '@/components/FiltrosCatalogo'
 import { Suspense } from 'react'
 
+export const dynamic = 'force-dynamic'
+
 interface SearchParams {
   marca?: string
   tipo?: string
