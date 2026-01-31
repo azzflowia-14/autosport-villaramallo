@@ -3,7 +3,7 @@ import { writeFile, mkdir } from 'fs/promises'
 import path from 'path'
 import { auth } from '@/lib/auth'
 
-const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
+const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/heic', 'image/heif']
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'vehiculos')
 

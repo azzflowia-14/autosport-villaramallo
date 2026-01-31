@@ -40,9 +40,9 @@ export default function EditarVehiculoPage() {
   const [formData, setFormData] = useState({
     marca: '',
     modelo: '',
-    anio: new Date().getFullYear(),
-    precio: 0,
-    kilometraje: 0,
+    anio: '',
+    precio: '',
+    kilometraje: '',
     tipo: '',
     estado: '',
     color: '',
@@ -63,9 +63,9 @@ export default function EditarVehiculoPage() {
         setFormData({
           marca: vehiculo.marca,
           modelo: vehiculo.modelo,
-          anio: vehiculo.anio,
-          precio: vehiculo.precio,
-          kilometraje: vehiculo.kilometraje,
+          anio: vehiculo.anio.toString(),
+          precio: vehiculo.precio.toString(),
+          kilometraje: vehiculo.kilometraje.toString(),
           tipo: vehiculo.tipo,
           estado: vehiculo.estado,
           color: vehiculo.color,
@@ -94,8 +94,7 @@ export default function EditarVehiculoPage() {
     const { name, value, type } = e.target
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked :
-               type === 'number' ? parseFloat(value) || 0 : value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
     }))
   }
 
@@ -110,6 +109,9 @@ export default function EditarVehiculoPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
+          anio: parseInt(formData.anio) || new Date().getFullYear(),
+          precio: parseFloat(formData.precio) || 0,
+          kilometraje: parseInt(formData.kilometraje) || 0,
           imagenes: JSON.stringify(imagenes),
         }),
       })

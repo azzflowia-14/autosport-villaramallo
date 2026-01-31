@@ -18,9 +18,9 @@ export default function NuevoVehiculoPage() {
   const [formData, setFormData] = useState({
     marca: '',
     modelo: '',
-    anio: new Date().getFullYear(),
-    precio: 0,
-    kilometraje: 0,
+    anio: new Date().getFullYear().toString(),
+    precio: '',
+    kilometraje: '',
     tipo: '',
     estado: '',
     color: '',
@@ -34,8 +34,7 @@ export default function NuevoVehiculoPage() {
     const { name, value, type } = e.target
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked :
-               type === 'number' ? parseFloat(value) || 0 : value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
     }))
   }
 
@@ -50,6 +49,9 @@ export default function NuevoVehiculoPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
+          anio: parseInt(formData.anio) || new Date().getFullYear(),
+          precio: parseFloat(formData.precio) || 0,
+          kilometraje: parseInt(formData.kilometraje) || 0,
           imagenes: JSON.stringify(imagenes),
         }),
       })
