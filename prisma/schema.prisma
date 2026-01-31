@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Vehiculo {
+  id          Int      @id @default(autoincrement())
+  marca       String
+  modelo      String
+  anio        Int
+  precio      Float
+  kilometraje Int
+  tipo        String   // sedan, suv, pickup, hatchback
+  estado      String   // nuevo, usado, certificado
+  color       String
+  transmision String   // manual, automatico
+  combustible String   // gasolina, diesel, hibrido, electrico
+  descripcion String?
+  imagenes    String   // JSON array de URLs
+  destacado   Boolean  @default(false)
+  activo      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  cotizaciones Cotizacion[]
+}
+
+model Cotizacion {
+  id         Int      @id @default(autoincrement())
+  vehiculoId Int
+  nombre     String
+  email      String
+  telefono   String
+  mensaje    String?
+  leida      Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  vehiculo Vehiculo @relation(fields: [vehiculoId], references: [id])
+}
+
+model Mensaje {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  email     String
+  telefono  String?
+  asunto    String
+  mensaje   String
+  leido     Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Usuario {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  nombre   String
+  rol      String @default("admin")
+}

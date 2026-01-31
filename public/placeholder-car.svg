@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#1f2937"/>
+  <g transform="translate(200, 150)">
+    <path d="M-60 20 L-80 20 L-80 30 C-80 35 -75 40 -70 40 L-50 40 C-45 40 -40 35 -40 30 L-40 20 L40 20 L40 30 C40 35 45 40 50 40 L70 40 C75 40 80 35 80 30 L80 20 L60 20 L60 0 L40 -30 L-40 -30 L-60 0 Z" fill="#374151" stroke="#4b5563" stroke-width="2"/>
+    <circle cx="-55" cy="30" r="12" fill="#1f2937" stroke="#4b5563" stroke-width="2"/>
+    <circle cx="55" cy="30" r="12" fill="#1f2937" stroke="#4b5563" stroke-width="2"/>
+    <rect x="-30" y="-25" width="60" height="20" rx="3" fill="#4b5563"/>
+  </g>
+  <text x="200" y="220" text-anchor="middle" fill="#6b7280" font-family="system-ui, sans-serif" font-size="14">Sin imagen</text>
+</svg>
