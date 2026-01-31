@@ -49,7 +49,7 @@ export function Navbar() {
               </Link>
             ))}
             <a
-              href="https://wa.me/5493329593046"
+              href="https://wa.me/5493407510895"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-autosport-red text-white px-5 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-autosport-red-dark transition-colors flex items-center gap-2"
@@ -96,7 +96,7 @@ export function Navbar() {
                 </Link>
               ))}
               <a
-                href="https://wa.me/5493329593046"
+                href="https://wa.me/5493407510895"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}

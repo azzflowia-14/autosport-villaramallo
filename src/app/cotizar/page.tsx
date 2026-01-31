@@ -129,7 +129,7 @@ export default function CotizarPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/5493329593046?text=Hola!%20Quiero%20consultar%20por%20financiación"
+              href="https://wa.me/5493407510895?text=Hola!%20Quiero%20consultar%20por%20financiación"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
