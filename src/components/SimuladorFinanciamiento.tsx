@@ -38,7 +38,7 @@ export function SimuladorFinanciamiento() {
 
   // Obtener marcas únicas
   const marcasUnicas = useMemo(() => {
-    const marcas = [...new Set(vehiculos.map(v => v.marca))]
+    const marcas = Array.from(new Set(vehiculos.map(v => v.marca)))
     return marcas.sort()
   }, [vehiculos])
 
