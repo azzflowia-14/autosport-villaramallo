@@ -26,16 +26,18 @@ Sitio web de concesionaria de autos (Next.js) + Chatbot de WhatsApp (n8n + Chatw
 
 ### Flujo del Workflow n8n
 ```
-Webhook (POST /portofino)
+Webhook1 (POST /portofino)
+    → Obtener Stock (GET /api/vehiculos/stock)
     → AI Agent (GPT-4.1-mini)
-    → HTTP Request (responde a Chatwoot)
+    → Respuesta Chatwoot
 ```
 
 ### Componentes
 1. **Webhook1**: Recibe mensajes de Chatwoot
-2. **AI Agent**: Procesa con GPT-4.1-mini + system prompt
-3. **Simple Memory**: Memoria por numero de telefono del cliente
-4. **Respuesta 7**: Envia respuesta de vuelta a Chatwoot
+2. **Obtener Stock**: Consulta el stock de vehiculos desde la API de Vercel
+3. **AI Agent**: Procesa con GPT-4.1-mini + system prompt (incluye stock)
+4. **Simple Memory**: Memoria por numero de telefono del cliente
+5. **Respuesta Chatwoot**: Envia respuesta de vuelta a Chatwoot
 
 ### Modelo
 - GPT-4.1-mini (OpenAI)
@@ -49,6 +51,13 @@ Webhook (POST /portofino)
 ```
 {{ $json.body.conversation.messages[0].sender.phone_number }}
 ```
+
+### Nodo: Obtener Stock
+- **Tipo**: HTTP Request (no es tool, se ejecuta siempre)
+- **Endpoint**: `https://autosport-villaramallo.vercel.app/api/vehiculos/stock`
+- **Metodo**: GET
+- El stock se inyecta en el system prompt del AI Agent
+- El AI siempre tiene acceso al stock actualizado en cada mensaje
 
 ---
 
@@ -96,8 +105,8 @@ Deriva cuando el cliente:
 
 ### Chatbot
 - [ ] **URGENTE**: Actualizar link de formulario de tasacion (actualmente dice "https://google.com [EDITAR CON LINK REAL]")
-- [ ] Agregar herramientas/tools para consultar stock de autos desde la web
-- [ ] Mejorar respuestas con info dinamica de vehiculos disponibles
+- [x] ~~Agregar herramientas/tools para consultar stock de autos desde la web~~ (Completado 2026-02-01)
+- [x] ~~Mejorar respuestas con info dinamica de vehiculos disponibles~~ (Completado 2026-02-01)
 
 ### Web
 - (agregar pendientes de la web aqui)
@@ -105,6 +114,12 @@ Deriva cuando el cliente:
 ---
 
 ## Notas de Sesiones Anteriores
+
+### 2026-02-01
+- Se creo endpoint `/api/vehiculos/stock` para consultar stock desde n8n
+- Se agrego nodo "Obtener Stock" antes del AI Agent (no como tool, sino HTTP Request directo)
+- El stock se inyecta en el system prompt - el bot siempre sabe que autos hay
+- El bot ahora responde con info real del stock en tiempo real
 
 ### 2026-01-31
 - Se trabajo en el prompt del chatbot
