@@ -91,9 +91,9 @@ export default async function HomePage() {
                   Ver Catálogo
                 </Button>
               </Link>
-              <Link href="/cotizar">
+              <Link href="/financiar">
                 <Button size="lg" variant="outline">
-                  Cotizar Ahora
+                  Simular Financiación
                 </Button>
               </Link>
             </div>
@@ -264,16 +264,73 @@ export default async function HomePage() {
               Desde tu celu
             </li>
           </ul>
-          <Link href="/cotizar">
+          <Link href="/financiar">
             <Button size="lg" className="!bg-white !text-autosport-red hover:!bg-gray-100 font-black">
-              Cotizar Financiación →
+              Simular Financiación →
             </Button>
           </Link>
         </div>
       </section>
 
+      {/* CTA Cotizá tu auto */}
+      <section className="bg-dark-900 py-16 border-t border-dark-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-dark-800 to-dark-900 rounded-2xl border border-dark-700 p-8 md:p-12">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
+                  ¿Querés vender tu auto?
+                </h2>
+                <p className="text-gray-400 mb-6">
+                  Subí las fotos de tu vehículo y te enviamos una cotización en menos de 24 horas.
+                  Podés usarlo como parte de pago o venderlo directamente.
+                </p>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-autosport-red" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Cotización en menos de 24 hs
+                  </li>
+                  <li className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-autosport-red" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Usalo como parte de pago
+                  </li>
+                  <li className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-autosport-red" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Sin compromiso
+                  </li>
+                </ul>
+                <Link href="/cotizar">
+                  <Button size="lg">
+                    Cotizar mi auto →
+                  </Button>
+                </Link>
+              </div>
+              <div className="hidden md:flex justify-center">
+                <div className="relative">
+                  <div className="w-48 h-48 bg-autosport-red/20 rounded-full flex items-center justify-center">
+                    <svg className="w-24 h-24 text-autosport-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    $
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Ubicación */}
-      <section className="bg-dark-900 py-16">
+      <section className="bg-dark-900 py-16 border-t border-dark-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>

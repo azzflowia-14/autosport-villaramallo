@@ -59,3 +59,24 @@ model Usuario {
   nombre   String
   rol      String @default("admin")
 }
+
+model Tasacion {
+  id          Int      @id @default(autoincrement())
+  marca       String
+  modelo      String
+  anio        Int
+  kilometraje Int
+  combustible String
+  transmision String
+  color       String
+  descripcion String?
+  imagenes    String   // JSON array de URLs de Cloudinary
+  nombre      String
+  email       String
+  telefono    String
+  estado      String   @default("pendiente") // pendiente, cotizado, rechazado
+  cotizacion  Float?   // Valor ofrecido (lo completa el admin)
+  notas       String?  // Notas internas del admin
+  leida       Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}

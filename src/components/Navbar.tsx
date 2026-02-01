@@ -9,7 +9,8 @@ import { cn } from '@/lib/utils'
 const navLinks = [
   { href: '/', label: 'Inicio' },
   { href: '/catalogo', label: 'Catálogo' },
-  { href: '/cotizar', label: 'Cotizador' },
+  { href: '/financiar', label: 'Financiar' },
+  { href: '/cotizar', label: 'Cotizar mi Auto' },
   { href: '/contacto', label: 'Contacto' },
 ]
 

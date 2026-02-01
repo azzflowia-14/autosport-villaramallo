@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 interface MarkAsReadButtonProps {
   id: number
-  type: 'cotizacion' | 'mensaje'
+  type: 'cotizacion' | 'mensaje' | 'tasacion'
 }
 
 export function MarkAsReadButton({ id, type }: MarkAsReadButtonProps) {
@@ -16,11 +16,16 @@ export function MarkAsReadButton({ id, type }: MarkAsReadButtonProps) {
     setIsLoading(true)
 
     try {
-      const endpoint = type === 'cotizacion' ? '/api/cotizaciones' : '/api/mensajes'
+      const endpoints: Record<string, string> = {
+        cotizacion: '/api/cotizaciones',
+        mensaje: '/api/mensajes',
+        tasacion: '/api/tasaciones',
+      }
+      const endpoint = endpoints[type]
       const response = await fetch(`${endpoint}/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ [type === 'cotizacion' ? 'leida' : 'leido']: true }),
+        body: JSON.stringify({ leida: true }),
       })
 
       if (response.ok) {
