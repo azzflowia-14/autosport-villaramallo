@@ -99,9 +99,12 @@ export function VehiculoCard({ vehiculo }: VehiculoCardProps) {
           </p>
           <Link
             href={`/catalogo/${vehiculo.id}`}
-            className="text-sm font-semibold text-white hover:text-autosport-red transition-colors uppercase tracking-wide"
+            className="text-sm font-semibold bg-autosport-red hover:bg-autosport-red-dark text-white px-4 py-2 rounded-lg transition-colors uppercase tracking-wide flex items-center gap-1 group/btn"
           >
             Ver más
+            <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </Link>
         </div>
       </div>

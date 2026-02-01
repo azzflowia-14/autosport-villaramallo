@@ -30,9 +30,17 @@ export function GaleriaVehiculo({ imagenes, marca, modelo }: GaleriaVehiculoProp
     )
   }
 
+  const irAnterior = () => {
+    setImagenActiva((prev) => (prev === 0 ? imagenesArray.length - 1 : prev - 1))
+  }
+
+  const irSiguiente = () => {
+    setImagenActiva((prev) => (prev === imagenesArray.length - 1 ? 0 : prev + 1))
+  }
+
   return (
     <div className="space-y-4">
-      <div className="aspect-[4/3] bg-dark-700 rounded-xl overflow-hidden relative">
+      <div className="aspect-[4/3] bg-dark-700 rounded-xl overflow-hidden relative group">
         <Image
           src={imagenesArray[imagenActiva]}
           alt={`${marca} ${modelo}`}
@@ -40,6 +48,37 @@ export function GaleriaVehiculo({ imagenes, marca, modelo }: GaleriaVehiculoProp
           className="object-cover"
           priority
         />
+
+        {imagenesArray.length > 1 && (
+          <>
+            {/* Flecha izquierda */}
+            <button
+              onClick={irAnterior}
+              className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Imagen anterior"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Flecha derecha */}
+            <button
+              onClick={irSiguiente}
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Imagen siguiente"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Indicador de posición */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/50 text-white text-sm px-3 py-1 rounded-full">
+              {imagenActiva + 1} / {imagenesArray.length}
+            </div>
+          </>
+        )}
       </div>
 
       {imagenesArray.length > 1 && (
