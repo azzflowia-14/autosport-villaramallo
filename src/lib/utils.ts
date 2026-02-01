@@ -36,14 +36,18 @@ export const transmisiones = [
 ]
 
 export const combustibles = [
-  { value: 'gasolina', label: 'Gasolina' },
+  { value: 'nafta', label: 'Nafta' },
   { value: 'diesel', label: 'Diésel' },
+  { value: 'gnc', label: 'GNC' },
+  { value: 'nafta-gnc', label: 'Nafta + GNC' },
   { value: 'hibrido', label: 'Híbrido' },
   { value: 'electrico', label: 'Eléctrico' },
 ]
 
 export const marcas = [
-  'Toyota', 'Honda', 'Nissan', 'Volkswagen', 'Ford',
-  'Chevrolet', 'Mazda', 'Hyundai', 'Kia', 'BMW',
-  'Mercedes-Benz', 'Audi', 'Jeep', 'Dodge', 'RAM'
+  'Alfa Romeo', 'Audi', 'BMW', 'BYD', 'Chevrolet',
+  'Citroën', 'Dodge', 'Fiat', 'Ford', 'Honda',
+  'Hyundai', 'Jeep', 'Kia', 'Mazda', 'Mercedes-Benz',
+  'Nissan', 'Peugeot', 'RAM', 'Renault', 'Suzuki',
+  'Toyota', 'Volkswagen', 'Volvo'
 ]
