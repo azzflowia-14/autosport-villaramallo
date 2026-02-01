@@ -9,7 +9,7 @@ export default async function AdminLayout({
   const session = await auth()
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-dark-900">
       {session ? (
         <div className="flex">
           <AdminSidebar user={session.user} />
