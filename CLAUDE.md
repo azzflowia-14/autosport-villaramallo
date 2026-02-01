@@ -15,6 +15,7 @@ Sitio web de concesionaria de autos (Next.js) + Chatbot de WhatsApp (n8n + Chatw
 - **URL**: https://autosports-n8n.bdgnn2.easypanel.host/
 - **Host**: VPS Hostinger con Easypanel
 - **Workflow principal**: "Autosports Main" (ID: -j4TYKEzYx5dlFwWBEGBq)
+- **API Key**: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ZDU5MTM3OC04YjY1LTRmMmEtYWM4Mi1kMjYxNjU1YzRkMzUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzY5ODk3NTQ3LCJleHAiOjE3NzI0Mjc2MDB9.M5rhU4vtnm0TK--sPUF5ydexv3Z2mGkcWAuQ-Yg8CR0`
 
 ### Chatwoot (Gestion de conversaciones)
 - **URL interna**: http://autosports-chatwoot:3000
