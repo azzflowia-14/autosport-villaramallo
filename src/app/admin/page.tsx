@@ -62,7 +62,9 @@ export default async function AdminDashboard() {
               </svg>
             </div>
           </div>
-          <p className="text-xs lg:text-sm text-gray-500 mt-2">{stats.totalVehiculos} total</p>
+          <Link href="/admin/vehiculos" className="text-xs lg:text-sm text-autosport-red hover:underline mt-2 inline-block">
+            Ver todos ({stats.totalVehiculos})
+          </Link>
         </div>
 
         <div className="bg-dark-800 border border-dark-600 rounded-xl p-4 lg:p-6">
