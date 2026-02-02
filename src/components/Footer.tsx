@@ -15,7 +15,7 @@ export function Footer() {
                 height={50}
                 className="w-12 h-12 object-contain"
               />
-              <span className="text-lg font-bold text-white">Villa Ramallo</span>
+              <span className="text-lg font-bold text-white">Autosport Villa Ramallo</span>
             </div>
             <p className="text-gray-400 mb-4">
               Venta de vehículos 0km y usados. Financiación propia, transferencias y el mejor servicio de Villa Ramallo.

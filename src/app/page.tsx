@@ -78,7 +78,7 @@ export default async function HomePage() {
             </div>
 
             <h1 className="text-3xl md:text-5xl font-bebas tracking-wide mb-1 text-white">
-              Villa Ramallo
+              Autosport Villa Ramallo
             </h1>
             <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
               Venta de vehículos <span className="text-autosport-red font-bold">0KM</span> y <span className="text-autosport-red font-bold">usados</span>.
