@@ -156,7 +156,7 @@ export default async function VehiculoDetallePage({
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href={`/cotizar?vehiculo=${vehiculo.id}`} className="flex-1">
               <Button size="lg" className="w-full">
-                Solicitar cotización
+                Financiación
               </Button>
             </Link>
             <Link href="/contacto" className="flex-1">

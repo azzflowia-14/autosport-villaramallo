@@ -105,16 +105,22 @@ Deriva cuando el cliente:
 ## Pendientes / TODO
 
 ### Chatbot
-- [ ] **URGENTE**: Actualizar link de formulario de tasacion (actualmente dice "https://google.com [EDITAR CON LINK REAL]")
+- [x] ~~**URGENTE**: Actualizar link de formulario de tasacion~~ (Completado 2026-02-02 - ahora apunta a /cotizar)
 - [x] ~~Agregar herramientas/tools para consultar stock de autos desde la web~~ (Completado 2026-02-01)
 - [x] ~~Mejorar respuestas con info dinamica de vehiculos disponibles~~ (Completado 2026-02-01)
 
 ### Web
-- (agregar pendientes de la web aqui)
+- [x] ~~Cambiar boton "Solicitar cotizacion" a "Financiacion" en detalle vehiculo~~ (Completado 2026-02-02)
 
 ---
 
 ## Notas de Sesiones Anteriores
+
+### 2026-02-02
+- Se corrigieron los links en el prompt de n8n:
+  - Simular cuota: `/cotizar` → `/financiar`
+  - Formulario tasacion: `/tasacion` → `/cotizar`
+- Se cambio el boton "Solicitar cotizacion" a "Financiacion" en la pagina de detalle del vehiculo
 
 ### 2026-02-01
 - Se creo endpoint `/api/vehiculos/stock` para consultar stock desde n8n
