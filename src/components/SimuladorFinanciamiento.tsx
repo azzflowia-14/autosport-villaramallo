@@ -107,7 +107,7 @@ export function SimuladorFinanciamiento() {
           </select>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[320px] overflow-y-auto pr-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[320px] overflow-y-auto pr-1">
           {vehiculosFiltrados.length === 0 ? (
             <div className="col-span-full text-center py-8 text-gray-500 text-sm">
               No hay vehículos disponibles

@@ -184,7 +184,7 @@ export default function EditarVehiculoPage() {
             />
 
             <Input
-              label="Precio (MXN)"
+              label="Precio (ARS)"
               name="precio"
               type="number"
               value={formData.precio}

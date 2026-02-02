@@ -71,7 +71,7 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
       {/* Sidebar */}
       <aside className={cn(
         'fixed lg:static inset-y-0 left-0 z-50 w-64 bg-dark-800 border-r border-dark-600 transform transition-transform duration-300 ease-in-out lg:transform-none',
-        isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0 pointer-events-none lg:pointer-events-auto'
       )}>
         <div className="p-6 hidden lg:block border-b border-dark-600">
           <Link href="/admin" className="flex items-center space-x-2">

@@ -116,7 +116,7 @@ export default function NuevoVehiculoPage() {
             />
 
             <Input
-              label="Precio (MXN)"
+              label="Precio (ARS)"
               name="precio"
               type="number"
               value={formData.precio}

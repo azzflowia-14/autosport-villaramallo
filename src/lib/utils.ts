@@ -1,14 +1,14 @@
 export function formatPrice(price: number): string {
-  return new Intl.NumberFormat('es-MX', {
+  return new Intl.NumberFormat('es-AR', {
     style: 'currency',
-    currency: 'MXN',
+    currency: 'ARS',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(price)
 }
 
 export function formatKilometraje(km: number): string {
-  return new Intl.NumberFormat('es-MX').format(km) + ' km'
+  return new Intl.NumberFormat('es-AR').format(km) + ' km'
 }
 
 export function cn(...classes: (string | undefined | false)[]): string {

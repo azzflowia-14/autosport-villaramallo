@@ -52,7 +52,7 @@ export default async function MensajesPage() {
               </div>
               <div className="flex justify-between items-center pt-3 border-t border-gray-100">
                 <p className="text-xs text-gray-400">
-                  {new Date(mensaje.createdAt).toLocaleDateString('es-MX', {
+                  {new Date(mensaje.createdAt).toLocaleDateString('es-AR', {
                     year: 'numeric',
                     month: 'short',
                     day: 'numeric',
@@ -117,7 +117,7 @@ export default async function MensajesPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-500">
-                      {new Date(mensaje.createdAt).toLocaleDateString('es-MX', {
+                      {new Date(mensaje.createdAt).toLocaleDateString('es-AR', {
                         year: 'numeric',
                         month: 'short',
                         day: 'numeric',

@@ -139,7 +139,7 @@ export default async function AdminDashboard() {
                   <p className="font-medium text-white">{formatPrice(cotizacion.vehiculo.precio)}</p>
                 </div>
                 <p className="text-xs text-gray-500 mt-2">
-                  {new Date(cotizacion.createdAt).toLocaleDateString('es-MX')}
+                  {new Date(cotizacion.createdAt).toLocaleDateString('es-AR')}
                 </p>
               </div>
             ))
@@ -186,7 +186,7 @@ export default async function AdminDashboard() {
                       </span>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-400">
-                      {new Date(cotizacion.createdAt).toLocaleDateString('es-MX')}
+                      {new Date(cotizacion.createdAt).toLocaleDateString('es-AR')}
                     </td>
                   </tr>
                 ))
