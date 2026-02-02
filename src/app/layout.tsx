@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Bebas_Neue, Racing_Sans_One } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { LayoutWrapper } from "@/components/LayoutWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,14 +33,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${inter.variable} ${bebasNeue.variable} ${racingSans.variable} font-sans antialiased bg-dark-900 text-white`}>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <WhatsAppButton />
-        </div>
+        <LayoutWrapper>
+          {children}
+        </LayoutWrapper>
       </body>
     </html>
   );

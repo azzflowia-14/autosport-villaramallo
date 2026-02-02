@@ -93,13 +93,13 @@ export function VehiculoCard({ vehiculo }: VehiculoCardProps) {
           </span>
         </div>
 
-        <div className="flex justify-between items-center pt-3 border-t border-dark-600">
+        <div className="flex flex-col gap-3 pt-3 border-t border-dark-600">
           <p className="text-xl font-black text-autosport-red">
             {formatPrice(vehiculo.precio)}
           </p>
           <Link
             href={`/catalogo/${vehiculo.id}`}
-            className="text-sm font-semibold bg-autosport-red hover:bg-autosport-red-dark text-white px-4 py-2 rounded-lg transition-colors uppercase tracking-wide flex items-center gap-1 group/btn"
+            className="text-sm font-semibold bg-autosport-red hover:bg-autosport-red-dark text-white px-4 py-2 rounded-lg transition-colors uppercase tracking-wide flex items-center justify-center gap-1 group/btn"
           >
             Ver más
             <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

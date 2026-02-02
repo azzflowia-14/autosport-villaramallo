@@ -24,8 +24,8 @@ export default async function VehiculosPage() {
     <div>
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Vehículos</h1>
-          <p className="text-sm lg:text-base text-gray-600">Gestiona el inventario de vehículos</p>
+          <h1 className="text-xl lg:text-2xl font-bold text-white">Vehículos</h1>
+          <p className="text-sm lg:text-base text-gray-400">Gestiona el inventario de vehículos</p>
         </div>
         <Link
           href="/admin/vehiculos/nuevo"
@@ -38,40 +38,40 @@ export default async function VehiculosPage() {
       {/* Vista móvil - Cards */}
       <div className="lg:hidden space-y-4">
         {vehiculos.length === 0 ? (
-          <div className="bg-white rounded-xl shadow-md p-8 text-center text-gray-500">
+          <div className="bg-dark-800 border border-dark-700 rounded-xl p-8 text-center text-gray-400">
             No hay vehículos registrados
           </div>
         ) : (
           vehiculos.map((vehiculo) => (
-            <div key={vehiculo.id} className="bg-white rounded-xl shadow-md p-4">
+            <div key={vehiculo.id} className="bg-dark-800 border border-dark-700 rounded-xl p-4">
               <div className="flex justify-between items-start mb-3">
                 <div>
-                  <p className="font-semibold text-gray-900">{vehiculo.marca} {vehiculo.modelo}</p>
-                  <p className="text-sm text-gray-500">{vehiculo.anio} - {vehiculo.color}</p>
+                  <p className="font-semibold text-white">{vehiculo.marca} {vehiculo.modelo}</p>
+                  <p className="text-sm text-gray-400">{vehiculo.anio} - {vehiculo.color}</p>
                 </div>
                 <div className="flex flex-col items-end gap-1">
                   <span className={`px-2 py-0.5 text-xs font-medium rounded-full capitalize ${
-                    vehiculo.estado === 'nuevo' ? 'bg-green-100 text-green-800' :
-                    vehiculo.estado === 'certificado' ? 'bg-blue-100 text-blue-800' :
-                    'bg-yellow-100 text-yellow-800'
+                    vehiculo.estado === 'nuevo' ? 'bg-green-900/50 text-green-400' :
+                    vehiculo.estado === 'certificado' ? 'bg-blue-900/50 text-blue-400' :
+                    'bg-yellow-900/50 text-yellow-400'
                   }`}>
                     {vehiculo.estado}
                   </span>
                   <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
-                    vehiculo.activo ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                    vehiculo.activo ? 'bg-green-900/50 text-green-400' : 'bg-red-900/50 text-red-400'
                   }`}>
                     {vehiculo.activo ? 'Activo' : 'Inactivo'}
                   </span>
                 </div>
               </div>
               <div className="flex justify-between items-center mb-3">
-                <p className="text-lg font-bold text-gray-900">{formatPrice(vehiculo.precio)}</p>
-                <p className="text-sm text-gray-500">{formatKilometraje(vehiculo.kilometraje)}</p>
+                <p className="text-lg font-bold text-white">{formatPrice(vehiculo.precio)}</p>
+                <p className="text-sm text-gray-400">{formatKilometraje(vehiculo.kilometraje)}</p>
               </div>
-              <div className="flex gap-3 pt-3 border-t border-gray-100">
+              <div className="flex gap-3 pt-3 border-t border-dark-600">
                 <Link
                   href={`/admin/vehiculos/${vehiculo.id}`}
-                  className="flex-1 text-center py-2 text-sm text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+                  className="flex-1 text-center py-2 text-sm text-blue-400 bg-blue-900/30 rounded-lg hover:bg-blue-900/50 transition-colors"
                 >
                   Editar
                 </Link>
@@ -85,53 +85,53 @@ export default async function VehiculosPage() {
       </div>
 
       {/* Vista desktop - Tabla */}
-      <div className="hidden lg:block bg-white rounded-xl shadow-md overflow-hidden">
+      <div className="hidden lg:block bg-dark-800 border border-dark-700 rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-dark-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vehículo</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kilometraje</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activo</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Vehículo</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Precio</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Kilometraje</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Estado</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Activo</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Acciones</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-dark-700">
               {vehiculos.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                  <td colSpan={6} className="px-6 py-8 text-center text-gray-400">
                     No hay vehículos registrados
                   </td>
                 </tr>
               ) : (
                 vehiculos.map((vehiculo) => (
-                  <tr key={vehiculo.id} className="hover:bg-gray-50">
+                  <tr key={vehiculo.id} className="hover:bg-dark-700/50">
                     <td className="px-6 py-4">
                       <div>
-                        <p className="font-medium text-gray-900">{vehiculo.marca} {vehiculo.modelo}</p>
-                        <p className="text-sm text-gray-500">{vehiculo.anio} - {vehiculo.color}</p>
+                        <p className="font-medium text-white">{vehiculo.marca} {vehiculo.modelo}</p>
+                        <p className="text-sm text-gray-400">{vehiculo.anio} - {vehiculo.color}</p>
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <p className="text-gray-900 font-medium">{formatPrice(vehiculo.precio)}</p>
+                      <p className="text-white font-medium">{formatPrice(vehiculo.precio)}</p>
                     </td>
                     <td className="px-6 py-4">
-                      <p className="text-gray-600">{formatKilometraje(vehiculo.kilometraje)}</p>
+                      <p className="text-gray-300">{formatKilometraje(vehiculo.kilometraje)}</p>
                     </td>
                     <td className="px-6 py-4">
                       <span className={`px-2 py-1 text-xs font-medium rounded-full capitalize ${
-                        vehiculo.estado === 'nuevo' ? 'bg-green-100 text-green-800' :
-                        vehiculo.estado === 'certificado' ? 'bg-blue-100 text-blue-800' :
-                        'bg-yellow-100 text-yellow-800'
+                        vehiculo.estado === 'nuevo' ? 'bg-green-900/50 text-green-400' :
+                        vehiculo.estado === 'certificado' ? 'bg-blue-900/50 text-blue-400' :
+                        'bg-yellow-900/50 text-yellow-400'
                       }`}>
                         {vehiculo.estado}
                       </span>
                     </td>
                     <td className="px-6 py-4">
                       <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                        vehiculo.activo ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                        vehiculo.activo ? 'bg-green-900/50 text-green-400' : 'bg-red-900/50 text-red-400'
                       }`}>
                         {vehiculo.activo ? 'Sí' : 'No'}
                       </span>
@@ -140,7 +140,7 @@ export default async function VehiculosPage() {
                       <div className="flex space-x-2">
                         <Link
                           href={`/admin/vehiculos/${vehiculo.id}`}
-                          className="text-blue-600 hover:text-blue-800"
+                          className="text-blue-400 hover:text-blue-300"
                         >
                           Editar
                         </Link>

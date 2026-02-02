@@ -141,15 +141,15 @@ export default function EditarVehiculoPage() {
   return (
     <div>
       <div className="mb-6 lg:mb-8">
-        <h1 className="text-xl lg:text-2xl font-bold text-gray-900">Editar Vehículo</h1>
-        <p className="text-sm lg:text-base text-gray-600">Modifica los datos del vehículo</p>
+        <h1 className="text-xl lg:text-2xl font-bold text-white">Editar Vehículo</h1>
+        <p className="text-sm lg:text-base text-gray-400">Modifica los datos del vehículo</p>
       </div>
 
-      <div className="bg-white rounded-xl shadow-md p-4 lg:p-8 max-w-3xl">
+      <div className="bg-dark-800 border border-dark-700 rounded-xl p-4 lg:p-8 max-w-3xl">
         <form onSubmit={handleSubmit} className="space-y-5 lg:space-y-6">
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <p className="text-sm text-red-600">{error}</p>
+            <div className="bg-red-900/30 border border-red-500/50 rounded-lg p-4">
+              <p className="text-sm text-red-400">{error}</p>
             </div>
           )}
 
@@ -272,9 +272,9 @@ export default function EditarVehiculoPage() {
                 name="destacado"
                 checked={formData.destacado}
                 onChange={handleChange}
-                className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                className="h-4 w-4 text-autosport-red rounded border-dark-600 bg-dark-900 focus:ring-autosport-red"
               />
-              <label htmlFor="destacado" className="ml-2 text-sm text-gray-700">
+              <label htmlFor="destacado" className="ml-2 text-sm text-gray-300">
                 Destacado
               </label>
             </div>
@@ -286,9 +286,9 @@ export default function EditarVehiculoPage() {
                 name="activo"
                 checked={formData.activo}
                 onChange={handleChange}
-                className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                className="h-4 w-4 text-autosport-red rounded border-dark-600 bg-dark-900 focus:ring-autosport-red"
               />
-              <label htmlFor="activo" className="ml-2 text-sm text-gray-700">
+              <label htmlFor="activo" className="ml-2 text-sm text-gray-300">
                 Activo (visible en catálogo)
               </label>
             </div>
