@@ -34,26 +34,38 @@ export async function GET(request: NextRequest) {
         combustible: true,
         descripcion: true,
         destacado: true,
+        imagenes: true,
       },
     })
 
     // Formato amigable para el AI Agent
-    const vehiculosFormateados = vehiculos.map((v) => ({
-      id: v.id,
-      nombre: `${v.marca} ${v.modelo} ${v.anio}`,
-      precio: v.precio,
-      precioTexto: formatearPrecio(v.precio),
-      kilometraje: v.kilometraje,
-      kilometrajeTexto: v.kilometraje === 0 ? '0 km (nuevo)' : `${v.kilometraje.toLocaleString('es-AR')} km`,
-      tipo: v.tipo,
-      estado: v.estado,
-      color: v.color,
-      transmision: v.transmision,
-      combustible: v.combustible,
-      descripcion: v.descripcion || '',
-      destacado: v.destacado,
-      urlDetalle: `https://autosport-villaramallo.vercel.app/catalogo/${v.id}`,
-    }))
+    const vehiculosFormateados = vehiculos.map((v) => {
+      let imagenes: string[] = []
+      try {
+        imagenes = JSON.parse(v.imagenes || '[]')
+      } catch {
+        imagenes = []
+      }
+
+      return {
+        id: v.id,
+        nombre: `${v.marca} ${v.modelo} ${v.anio}`,
+        precio: v.precio,
+        precioTexto: formatearPrecio(v.precio),
+        kilometraje: v.kilometraje,
+        kilometrajeTexto: v.kilometraje === 0 ? '0 km (nuevo)' : `${v.kilometraje.toLocaleString('es-AR')} km`,
+        tipo: v.tipo,
+        estado: v.estado,
+        color: v.color,
+        transmision: v.transmision,
+        combustible: v.combustible,
+        descripcion: v.descripcion || '',
+        destacado: v.destacado,
+        urlDetalle: `https://autosport-villaramallo.vercel.app/catalogo/${v.id}`,
+        imagenPrincipal: imagenes[0] || null,
+        imagenes: imagenes,
+      }
+    })
 
     // Resumen del stock
     const resumen = {
