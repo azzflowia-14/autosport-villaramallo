@@ -69,7 +69,7 @@ export default async function HomePage() {
             <div className="inline-block mb-3 p-1 rounded-full bg-gradient-to-br from-white/15 via-gray-300/5 to-white/5 shadow-[0_0_20px_rgba(255,255,255,0.1)] ring-1 ring-white/15">
               <Image
                 src="/images/logo.png"
-                alt="Autosport Villa Ramallo"
+                alt="Autosport Emanuel Berdullas"
                 width={200}
                 height={200}
                 className="w-40 h-40 md:w-48 md:h-48 object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
@@ -78,7 +78,7 @@ export default async function HomePage() {
             </div>
 
             <h1 className="text-3xl md:text-5xl font-avant-garde tracking-wide mb-1 text-white">
-              Autosport Villa Ramallo
+              Autosport Emanuel Berdullas
             </h1>
             <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
               Venta de vehículos <span className="text-autosport-red font-bold">0KM</span> y <span className="text-autosport-red font-bold">usados</span>.

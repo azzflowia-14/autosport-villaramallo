@@ -264,7 +264,7 @@ export default async function CotizacionesPage() {
                             <MarkAsReadButton id={tasacion.id} type="tasacion" />
                           )}
                           <a
-                            href={`https://wa.me/${tasacion.telefono.replace(/\D/g, '')}?text=Hola ${tasacion.nombre}, te escribimos de Autosport Villa Ramallo por la cotización de tu ${tasacion.marca} ${tasacion.modelo} ${tasacion.anio}.`}
+                            href={`https://wa.me/${tasacion.telefono.replace(/\D/g, '')}?text=Hola ${tasacion.nombre}, te escribimos de Autosport Emanuel Berdullas por la cotización de tu ${tasacion.marca} ${tasacion.modelo} ${tasacion.anio}.`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-3 py-1 text-sm bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center gap-1"

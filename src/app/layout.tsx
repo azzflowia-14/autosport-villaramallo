@@ -21,7 +21,7 @@ const avantGarde = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Autosport Villa Ramallo | Vehículos 0KM y Usados",
+  title: "Autosport Emanuel Berdullas | Vehículos 0KM y Usados",
   description: "Venta de vehículos 0km y usados en Villa Ramallo. Financiación, transferencias y el mejor servicio. Av. J. Newbery 345, V. Ramallo.",
 };
 

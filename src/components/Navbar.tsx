@@ -26,7 +26,7 @@ export function Navbar() {
             <Link href="/" className="flex items-center">
               <Image
                 src="/images/logo.png"
-                alt="Autosport Villa Ramallo"
+                alt="Autosport Emanuel Berdullas"
                 width={100}
                 height={100}
                 className="w-20 h-20 md:w-24 md:h-24 object-contain"

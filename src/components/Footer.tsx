@@ -10,12 +10,12 @@ export function Footer() {
             <div className="flex items-center space-x-3 mb-4 justify-center md:justify-start">
               <Image
                 src="/images/logo.png"
-                alt="Autosport Villa Ramallo"
+                alt="Autosport Emanuel Berdullas"
                 width={50}
                 height={50}
                 className="w-12 h-12 object-contain"
               />
-              <span className="text-lg font-bold text-white">Autosport Villa Ramallo</span>
+              <span className="text-lg font-bold text-white">Autosport Emanuel Berdullas</span>
             </div>
             <p className="text-gray-400 mb-4">
               Venta de vehículos 0km y usados. Financiación propia, transferencias y el mejor servicio de Villa Ramallo.
@@ -73,7 +73,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-dark-700 mt-8 pt-8 text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Autosport Villa Ramallo. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Autosport Emanuel Berdullas. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
