@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Bebas_Neue, Racing_Sans_One } from "next/font/google";
+import { Inter, Bebas_Neue } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
@@ -14,10 +15,9 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas",
 });
 
-const racingSans = Racing_Sans_One({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-racing",
+const avantGarde = localFont({
+  src: "../../public/fonts/ITCAvantGardeStd-Bold.woff2",
+  variable: "--font-avant-garde",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} ${bebasNeue.variable} ${racingSans.variable} font-sans antialiased bg-dark-900 text-white`}>
+      <body className={`${inter.variable} ${bebasNeue.variable} ${avantGarde.variable} font-sans antialiased bg-dark-900 text-white`}>
         <LayoutWrapper>
           {children}
         </LayoutWrapper>

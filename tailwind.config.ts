@@ -27,7 +27,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
         bebas: ['var(--font-bebas)', 'sans-serif'],
-        racing: ['var(--font-racing)', 'sans-serif'],
+        'avant-garde': ['var(--font-avant-garde)', 'sans-serif'],
       },
     },
   },

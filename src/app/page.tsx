@@ -77,7 +77,7 @@ export default async function HomePage() {
               />
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-racing tracking-wide mb-1 text-white">
+            <h1 className="text-3xl md:text-5xl font-avant-garde tracking-wide mb-1 text-white">
               Autosport Villa Ramallo
             </h1>
             <p className="text-lg text-gray-400 mb-4 max-w-2xl mx-auto">
