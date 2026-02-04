@@ -27,12 +27,20 @@ export default async function VehiculosPage() {
           <h1 className="text-xl lg:text-2xl font-bold text-white">Vehículos</h1>
           <p className="text-sm lg:text-base text-gray-400">Gestiona el inventario de vehículos</p>
         </div>
-        <Link
-          href="/admin/vehiculos/nuevo"
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm lg:text-base"
-        >
-          + Nuevo Vehículo
-        </Link>
+        <div className="flex gap-2">
+          <Link
+            href="/admin/vehiculos/importar"
+            className="border border-zinc-600 text-zinc-300 px-4 py-2 rounded-lg hover:bg-zinc-800 transition-colors text-center text-sm lg:text-base"
+          >
+            Importar Excel
+          </Link>
+          <Link
+            href="/admin/vehiculos/nuevo"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm lg:text-base"
+          >
+            + Nuevo Vehículo
+          </Link>
+        </div>
       </div>
 
       {/* Vista móvil - Cards */}
