@@ -55,12 +55,12 @@ const COEFICIENTES_USADOS: Record<number, number> = {
 
 const PLAZOS = [6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36]
 
-function esSinInteres(plazo: number, anioVehiculo: number): boolean {
-  return plazo === 12 && anioVehiculo >= 2015
+function esSinInteres(plazo: number, anioVehiculo: number, entrega: number, precioVehiculo: number): boolean {
+  return plazo === 12 && anioVehiculo >= 2015 && entrega >= precioVehiculo * 0.6
 }
 
-function calcularCuota(monto: number, plazo: number, anioVehiculo: number): number {
-  if (esSinInteres(plazo, anioVehiculo)) {
+function calcularCuota(monto: number, plazo: number, anioVehiculo: number, entrega: number, precioVehiculo: number): number {
+  if (esSinInteres(plazo, anioVehiculo, entrega, precioVehiculo)) {
     return Math.round(monto / 12)
   }
   const coeficientes = anioVehiculo >= 2021 ? COEFICIENTES_NUEVOS : COEFICIENTES_USADOS
@@ -265,6 +265,28 @@ export function SimuladorFinanciamiento() {
             </div>
           </div>
 
+          {/* Mensaje 12 cuotas sin interés */}
+          {selectedVehiculo && selectedVehiculo.anio >= 2015 && diferencia > 0 && (
+            <div className={`mb-4 rounded-xl p-3 border text-xs ${
+              dineroNum >= selectedVehiculo.precio * 0.6
+                ? 'bg-green-500/10 border-green-500/30 text-green-400'
+                : 'bg-dark-900 border-dark-700 text-gray-400'
+            }`}>
+              {dineroNum >= selectedVehiculo.precio * 0.6 ? (
+                <p className="font-semibold">
+                  Entregando el 60% o más, podés acceder a 12 cuotas sin interés.
+                </p>
+              ) : (
+                <p>
+                  Entregando <span className="text-white font-semibold">{formatPrice(Math.ceil(selectedVehiculo.precio * 0.6))}</span> (60% del valor), accedés a <span className="text-green-400 font-semibold">12 cuotas sin interés</span>.
+                  {dineroNum > 0 && (
+                    <span> Te faltan <span className="text-white font-semibold">{formatPrice(Math.ceil(selectedVehiculo.precio * 0.6) - dineroNum)}</span> para llegar.</span>
+                  )}
+                </p>
+              )}
+            </div>
+          )}
+
           {/* Botón cotizar */}
           <button
             onClick={handleCotizar}
@@ -339,9 +361,9 @@ export function SimuladorFinanciamiento() {
             <div className="p-4 overflow-y-auto max-h-[50vh]">
               <div className="grid grid-cols-2 gap-3">
                 {PLAZOS.map((plazo) => {
-                  const cuota = calcularCuota(diferencia, plazo, selectedVehiculo.anio)
+                  const cuota = calcularCuota(diferencia, plazo, selectedVehiculo.anio, dineroNum, selectedVehiculo.precio)
                   const total = cuota * plazo
-                  const sinInteres = esSinInteres(plazo, selectedVehiculo.anio)
+                  const sinInteres = esSinInteres(plazo, selectedVehiculo.anio, dineroNum, selectedVehiculo.precio)
                   return (
                     <div
                       key={plazo}
