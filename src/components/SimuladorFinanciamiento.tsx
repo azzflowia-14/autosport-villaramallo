@@ -55,7 +55,14 @@ const COEFICIENTES_USADOS: Record<number, number> = {
 
 const PLAZOS = [6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36]
 
+function esSinInteres(plazo: number, anioVehiculo: number): boolean {
+  return plazo === 12 && anioVehiculo >= 2015
+}
+
 function calcularCuota(monto: number, plazo: number, anioVehiculo: number): number {
+  if (esSinInteres(plazo, anioVehiculo)) {
+    return Math.round(monto / 12)
+  }
   const coeficientes = anioVehiculo >= 2021 ? COEFICIENTES_NUEVOS : COEFICIENTES_USADOS
   const coeficiente = coeficientes[plazo] || 0
   return Math.round(monto * coeficiente)
@@ -334,16 +341,24 @@ export function SimuladorFinanciamiento() {
                 {PLAZOS.map((plazo) => {
                   const cuota = calcularCuota(diferencia, plazo, selectedVehiculo.anio)
                   const total = cuota * plazo
+                  const sinInteres = esSinInteres(plazo, selectedVehiculo.anio)
                   return (
                     <div
                       key={plazo}
-                      className="bg-dark-700 border border-dark-600 rounded-xl p-4 hover:border-autosport-red/50 transition-colors"
+                      className={`bg-dark-700 border rounded-xl p-4 hover:border-autosport-red/50 transition-colors relative ${
+                        sinInteres ? 'border-green-500/50 ring-1 ring-green-500/20' : 'border-dark-600'
+                      }`}
                     >
+                      {sinInteres && (
+                        <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                          Sin interés
+                        </span>
+                      )}
                       <div className="flex items-baseline justify-between mb-1">
                         <span className="text-2xl font-bold text-white">{plazo}</span>
                         <span className="text-xs text-gray-400">cuotas</span>
                       </div>
-                      <div className="text-lg font-bold text-autosport-red">
+                      <div className={`text-lg font-bold ${sinInteres ? 'text-green-400' : 'text-autosport-red'}`}>
                         {formatPrice(cuota)}
                       </div>
                       <div className="text-xs text-gray-500 mt-1">
