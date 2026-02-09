@@ -70,7 +70,7 @@ export default function ContactoPage() {
         {/* Cards de contacto rápido */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <a
-            href="https://wa.me/5493407510895"
+            href="https://wa.me/5493329593046"
             target="_blank"
             rel="noopener noreferrer"
             className="group bg-dark-800 border border-dark-700 rounded-2xl p-6 hover:border-green-500/50 hover:bg-dark-800/80 transition-all duration-300"
@@ -83,7 +83,7 @@ export default function ContactoPage() {
               </div>
               <div>
                 <h3 className="font-bold text-white text-lg">WhatsApp</h3>
-                <p className="text-green-500">+54 9 3407 51-0895</p>
+                <p className="text-green-500">+54 9 3329 59-3046</p>
               </div>
             </div>
           </a>

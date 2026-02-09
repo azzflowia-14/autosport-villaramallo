@@ -374,8 +374,8 @@ export default async function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold text-white">WhatsApp</p>
-                    <a href="https://wa.me/5493407510895" target="_blank" rel="noopener noreferrer" className="text-green-500 hover:text-green-400 transition-colors">
-                      +54 9 3407 51-0895
+                    <a href="https://wa.me/5493329593046" target="_blank" rel="noopener noreferrer" className="text-green-500 hover:text-green-400 transition-colors">
+                      +54 9 3329 59-3046
                     </a>
                   </div>
                 </div>
