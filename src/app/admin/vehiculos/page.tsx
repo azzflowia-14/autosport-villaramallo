@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
 import { formatPrice, formatKilometraje } from '@/lib/utils'
 import { DeleteVehiculoButton } from './DeleteVehiculoButton'
+import { ExportarCSVButton } from './ExportarCSVButton'
 
 async function getVehiculos() {
   return prisma.vehiculo.findMany({
@@ -28,6 +29,7 @@ export default async function VehiculosPage() {
           <p className="text-sm lg:text-base text-gray-400">Gestiona el inventario de vehículos</p>
         </div>
         <div className="flex gap-2">
+          <ExportarCSVButton />
           <Link
             href="/admin/vehiculos/importar"
             className="border border-zinc-600 text-zinc-300 px-4 py-2 rounded-lg hover:bg-zinc-800 transition-colors text-center text-sm lg:text-base"
