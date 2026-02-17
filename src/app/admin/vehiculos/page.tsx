@@ -29,6 +29,12 @@ export default async function VehiculosPage() {
           <p className="text-sm lg:text-base text-gray-400">Gestiona el inventario de vehículos</p>
         </div>
         <div className="flex gap-2">
+          <Link
+            href="/admin/vehiculos/precios"
+            className="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors text-center text-sm lg:text-base"
+          >
+            Editar Precios
+          </Link>
           <ExportarCSVButton />
           <Link
             href="/admin/vehiculos/importar"
