@@ -56,7 +56,7 @@ const COEFICIENTES_USADOS: Record<number, number> = {
 const PLAZOS = [6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36]
 
 function esSinInteres(plazo: number, anioVehiculo: number, entrega: number, precioVehiculo: number): boolean {
-  return plazo === 12 && anioVehiculo >= 2015 && entrega >= precioVehiculo * 0.6
+  return plazo === 12 && anioVehiculo >= 2015 && entrega >= precioVehiculo * 0.58
 }
 
 function calcularCuota(monto: number, plazo: number, anioVehiculo: number, entrega: number, precioVehiculo: number): number {
@@ -268,19 +268,19 @@ export function SimuladorFinanciamiento() {
           {/* Mensaje 12 cuotas sin interés */}
           {selectedVehiculo && selectedVehiculo.anio >= 2015 && diferencia > 0 && (
             <div className={`mb-4 rounded-xl p-3 border text-xs ${
-              dineroNum >= selectedVehiculo.precio * 0.6
+              dineroNum >= selectedVehiculo.precio * 0.58
                 ? 'bg-green-500/10 border-green-500/30 text-green-400'
                 : 'bg-dark-900 border-dark-700 text-gray-400'
             }`}>
-              {dineroNum >= selectedVehiculo.precio * 0.6 ? (
+              {dineroNum >= selectedVehiculo.precio * 0.58 ? (
                 <p className="font-semibold">
                   Entregando el 60% o más, podés acceder a 12 cuotas sin interés.
                 </p>
               ) : (
                 <p>
-                  Entregando <span className="text-white font-semibold">{formatPrice(Math.ceil(selectedVehiculo.precio * 0.6))}</span> (60% del valor), accedés a <span className="text-green-400 font-semibold">12 cuotas sin interés</span>.
+                  Entregando <span className="text-white font-semibold">{formatPrice(Math.ceil(selectedVehiculo.precio * 0.58))}</span> (60% del valor), accedés a <span className="text-green-400 font-semibold">12 cuotas sin interés</span>.
                   {dineroNum > 0 && (
-                    <span> Te faltan <span className="text-white font-semibold">{formatPrice(Math.ceil(selectedVehiculo.precio * 0.6) - dineroNum)}</span> para llegar.</span>
+                    <span> Te faltan <span className="text-white font-semibold">{formatPrice(Math.ceil(selectedVehiculo.precio * 0.58) - dineroNum)}</span> para llegar.</span>
                   )}
                 </p>
               )}
