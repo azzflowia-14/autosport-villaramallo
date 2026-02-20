@@ -22,6 +22,7 @@ export const tiposVehiculo = [
   { value: 'hatchback', label: 'Hatchback' },
   { value: 'coupe', label: 'Coupé' },
   { value: 'van', label: 'Van' },
+  { value: 'moto', label: 'Moto' },
 ]
 
 export const estadosVehiculo = [
@@ -46,7 +47,7 @@ export const combustibles = [
 
 export const marcas = [
   'Alfa Romeo', 'Audi', 'BMW', 'BYD', 'Chevrolet',
-  'Citroën', 'Dodge', 'Fiat', 'Ford', 'Honda',
+  'Citroën', 'Dodge', 'Ducati', 'Fiat', 'Ford', 'Honda',
   'Hyundai', 'Jeep', 'Kia', 'Mazda', 'Mercedes-Benz',
   'Nissan', 'Peugeot', 'RAM', 'Renault', 'Suzuki',
   'Toyota', 'Volkswagen', 'Volvo'
