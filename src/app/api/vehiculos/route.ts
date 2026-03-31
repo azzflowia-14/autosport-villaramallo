@@ -17,6 +17,14 @@ const vehiculoSchema = z.object({
   imagenes: z.string(),
   destacado: z.boolean().optional(),
   activo: z.boolean().optional(),
+  // Stock fields
+  precioCDO: z.number().positive().nullable().optional(),
+  precioEntrega: z.number().min(0).nullable().optional(),
+  cuotaX12: z.number().positive().nullable().optional(),
+  costoCompra: z.number().min(0).nullable().optional(),
+  estadoStock: z.string().optional(),
+  patente: z.string().nullable().optional(),
+  observaciones: z.string().nullable().optional(),
 })
 
 export async function GET(request: NextRequest) {

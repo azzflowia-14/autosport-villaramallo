@@ -52,3 +52,27 @@ export const marcas = [
   'Nissan', 'Peugeot', 'RAM', 'Renault', 'Suzuki',
   'Toyota', 'Volkswagen', 'Volvo'
 ]
+
+export const estadosStock = [
+  { value: 'disponible', label: 'Disponible', color: 'green' },
+  { value: 'reservado', label: 'Reservado', color: 'yellow' },
+  { value: 'en_preparacion', label: 'En Preparación', color: 'blue' },
+  { value: 'vendido', label: 'Vendido', color: 'gray' },
+]
+
+export function calcularDiasEnStock(fechaIngreso: string | Date): number {
+  const ingreso = new Date(fechaIngreso)
+  const hoy = new Date()
+  return Math.floor((hoy.getTime() - ingreso.getTime()) / (1000 * 60 * 60 * 24))
+}
+
+export function formatPriceShort(price: number): string {
+  if (price >= 1000000) {
+    const m = price / 1000000
+    return `$${m % 1 === 0 ? m.toFixed(0) : m.toFixed(1)}M`
+  }
+  if (price >= 1000) {
+    return `$${(price / 1000).toFixed(0)}K`
+  }
+  return `$${price}`
+}

@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
 
-    const where: Record<string, unknown> = { activo: true }
+    const where: Record<string, unknown> = { activo: true, estadoStock: { not: 'vendido' } }
 
     if (searchParams.get('marca')) where.marca = { contains: searchParams.get('marca'), mode: 'insensitive' }
     if (searchParams.get('tipo')) where.tipo = searchParams.get('tipo')
@@ -26,9 +26,13 @@ export async function GET(request: NextRequest) {
         modelo: true,
         anio: true,
         precio: true,
+        precioCDO: true,
+        precioEntrega: true,
+        cuotaX12: true,
         kilometraje: true,
         tipo: true,
         estado: true,
+        estadoStock: true,
         color: true,
         transmision: true,
         combustible: true,
@@ -52,10 +56,17 @@ export async function GET(request: NextRequest) {
         nombre: `${v.marca} ${v.modelo} ${v.anio}`,
         precio: v.precio,
         precioTexto: formatearPrecio(v.precio),
+        precioCDO: v.precioCDO,
+        precioCDOTexto: v.precioCDO ? formatearPrecio(v.precioCDO) : null,
+        precioEntrega: v.precioEntrega,
+        precioEntregaTexto: v.precioEntrega ? formatearPrecio(v.precioEntrega) : null,
+        cuotaX12: v.cuotaX12,
+        cuotaX12Texto: v.cuotaX12 ? formatearPrecio(v.cuotaX12) : null,
         kilometraje: v.kilometraje,
         kilometrajeTexto: v.kilometraje === 0 ? '0 km (nuevo)' : `${v.kilometraje.toLocaleString('es-AR')} km`,
         tipo: v.tipo,
         estado: v.estado,
+        estadoStock: v.estadoStock,
         color: v.color,
         transmision: v.transmision,
         combustible: v.combustible,

@@ -25,7 +25,42 @@ model Vehiculo {
   activo      Boolean  @default(true)
   createdAt   DateTime @default(now())
 
-  cotizaciones Cotizacion[]
+  // Stock control fields
+  precioCDO     Float?   // Precio contado (con descuento)
+  precioEntrega Float?   // Seña / entrega mínima
+  cuotaX12      Float?   // Cuota en 12 meses
+  costoCompra   Float?   // Lo que pagó el concesionario
+  estadoStock   String   @default("disponible") // disponible, reservado, en_preparacion, vendido
+  fechaIngreso  DateTime @default(now())
+  fechaVenta    DateTime?
+  patente       String?
+  observaciones String?
+  // Reserva
+  clienteNombre  String?
+  clienteTelefono String?
+  montoSena      Float?
+
+  cotizaciones     Cotizacion[]
+  historialPrecios HistorialPrecio[]
+}
+
+model HistorialPrecio {
+  id             Int      @id @default(autoincrement())
+  vehiculoId     Int
+  campo          String   // precio, precioCDO, precioEntrega, cuotaX12
+  precioAnterior Float
+  precioNuevo    Float
+  fecha          DateTime @default(now())
+  usuario        String   // email del admin
+
+  vehiculo Vehiculo @relation(fields: [vehiculoId], references: [id], onDelete: Cascade)
+}
+
+model ConfigPrecios {
+  id                Int   @id @default(autoincrement())
+  descuentoCDO      Float @default(15)   // % descuento para contado
+  porcentajeEntrega Float @default(30)   // % del precio como entrega
+  tasaX12           Float @default(5)    // % tasa mensual cuotas
 }
 
 model Cotizacion {
