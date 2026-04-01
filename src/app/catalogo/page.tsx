@@ -38,7 +38,16 @@ export default async function CatalogoPage({
   searchParams: Promise<SearchParams>
 }) {
   const params = await searchParams
-  const vehiculos = await getVehiculos(params)
+  const todosVehiculos = await getVehiculos(params)
+  // No mostrar vehículos sin fotos en el catálogo público
+  const vehiculos = todosVehiculos.filter((v) => {
+    try {
+      const imgs = JSON.parse(v.imagenes || '[]')
+      return Array.isArray(imgs) && imgs.length > 0
+    } catch {
+      return false
+    }
+  })
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

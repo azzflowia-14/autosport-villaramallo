@@ -25,6 +25,14 @@ export default async function VehiculoDetallePage({
     notFound()
   }
 
+  // No mostrar vehículos sin fotos
+  try {
+    const imgs = JSON.parse(vehiculo.imagenes || '[]')
+    if (!Array.isArray(imgs) || imgs.length === 0) notFound()
+  } catch {
+    notFound()
+  }
+
   const estadoColors: Record<string, string> = {
     nuevo: 'bg-green-100 text-green-800',
     usado: 'bg-yellow-100 text-yellow-800',
