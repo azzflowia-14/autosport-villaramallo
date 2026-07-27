@@ -45,6 +45,7 @@ export function GaleriaVehiculo({ imagenes, marca, modelo }: GaleriaVehiculoProp
           src={imagenesArray[imagenActiva]}
           alt={`${marca} ${modelo}`}
           fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
           className="object-cover"
           priority
         />
@@ -97,6 +98,7 @@ export function GaleriaVehiculo({ imagenes, marca, modelo }: GaleriaVehiculoProp
                 src={img}
                 alt={`${marca} ${modelo} - ${index + 1}`}
                 fill
+                sizes="(max-width: 1024px) 25vw, 12vw"
                 className="object-cover"
               />
             </button>

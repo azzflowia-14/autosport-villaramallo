@@ -1,6 +1,13 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { Button } from '@/components/ui/Button'
 import { SimuladorFinanciamiento } from '@/components/SimuladorFinanciamiento'
+
+export const metadata: Metadata = {
+  title: 'Simulador de Financiación',
+  description:
+    'Simulá la financiación de tu próximo auto: elegí el vehículo, ingresá tu entrega y calculá las cuotas al instante.',
+}
 
 export default function FinanciarPage() {
   return (

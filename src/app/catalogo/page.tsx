@@ -2,8 +2,15 @@ import { prisma } from '@/lib/prisma'
 import { VehiculoCard } from '@/components/VehiculoCard'
 import { FiltrosCatalogo } from '@/components/FiltrosCatalogo'
 import { Suspense } from 'react'
+import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
+
+export const metadata: Metadata = {
+  title: 'Catálogo de Vehículos',
+  description:
+    'Catálogo de vehículos 0km y usados seleccionados en Villa Ramallo. Filtrá por marca, tipo, precio y año.',
+}
 
 interface SearchParams {
   marca?: string

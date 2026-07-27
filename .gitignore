@@ -45,3 +45,4 @@ next-env.d.ts
 # Imagenes subidas
 /public/uploads/vehiculos/*
 !/public/uploads/vehiculos/.gitkeep
+.env*

@@ -79,6 +79,6 @@ curl -X PATCH -H "X-N8N-API-KEY: <KEY>" -H "Content-Type: application/json" \
 
 ### Info de la concesionaria (para el bot)
 - Ubicacion: Av. J. Newbery 345, Villa Ramallo, Buenos Aires
-- WhatsApp: +54 9 3407 51-0895
+- WhatsApp: +54 9 3329 59-3046 (centralizado en `src/lib/negocio.ts`)
 - Horarios: Lun-Vie 8-12 y 16-20, Sab/Feriados 8:30-12:30
 - Servicios: Venta 0KM (BYD), usados con garantia, financiacion CreditCar, tasaciones

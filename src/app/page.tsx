@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { prisma } from '@/lib/prisma'
 import { VehiculoCard } from '@/components/VehiculoCard'
 import { Button } from '@/components/ui/Button'
+import { NEGOCIO, waLink } from '@/lib/negocio'
 
 // Forzar renderizado dinámico (no estático)
 export const dynamic = 'force-dynamic'
@@ -374,8 +375,8 @@ export default async function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold text-white">WhatsApp</p>
-                    <a href="https://wa.me/5493329593046" target="_blank" rel="noopener noreferrer" className="text-green-500 hover:text-green-400 transition-colors">
-                      +54 9 3329 59-3046
+                    <a href={waLink('Hola! Quiero hacer una consulta.')} target="_blank" rel="noopener noreferrer" className="text-green-500 hover:text-green-400 transition-colors">
+                      {NEGOCIO.whatsappDisplay}
                     </a>
                   </div>
                 </div>
@@ -384,7 +385,8 @@ export default async function HomePage() {
 
             <div className="bg-dark-800 rounded-xl border border-dark-700 overflow-hidden h-[300px] md:h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.5!2d-60.0489!3d-33.4906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b76412dbf7fa13%3A0x1234567890!2sAv.%20Jorge%20Newbery%20345%2C%20Villa%20Ramallo!5e0!3m2!1ses!2sar!4v1234567890"
+                src="https://www.google.com/maps?q=Av.+Jorge+Newbery+345,+Villa+Ramallo,+Buenos+Aires,+Argentina&output=embed"
+                title="Ubicación de Autosport Emanuel Berdullas"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

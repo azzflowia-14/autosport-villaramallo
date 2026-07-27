@@ -1,9 +1,9 @@
 'use client'
 
+import { waLink } from '@/lib/negocio'
+
 export function WhatsAppButton() {
-  const phoneNumber = '5493329593046'
-  const message = 'Hola! Me gustaría consultar sobre un vehículo.'
-  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+  const url = waLink('Hola! Me gustaría consultar sobre un vehículo.')
 
   return (
     <a
