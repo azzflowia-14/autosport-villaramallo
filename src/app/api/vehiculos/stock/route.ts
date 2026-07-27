@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { SITE_URL } from '@/lib/negocio'
 
 // Endpoint público para el chatbot de n8n
 // GET /api/vehiculos/stock
@@ -72,7 +73,7 @@ export async function GET(request: NextRequest) {
         combustible: v.combustible,
         descripcion: v.descripcion || '',
         destacado: v.destacado,
-        urlDetalle: `https://autosport-villaramallo.vercel.app/catalogo/${v.id}`,
+        urlDetalle: `${SITE_URL}/catalogo/${v.id}`,
         imagenPrincipal: imagenes[0] || null,
         imagenes: imagenes,
       }

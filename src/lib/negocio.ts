@@ -16,8 +16,9 @@ export const NEGOCIO = {
   ],
 } as const
 
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://autosport-villaramallo.vercel.app'
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.autosportemanuelberdullas.com.ar'
+).trim()
 
 export function waLink(mensaje: string): string {
   return `https://wa.me/${NEGOCIO.whatsapp}?text=${encodeURIComponent(mensaje)}`
