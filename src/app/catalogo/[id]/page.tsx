@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { cache } from 'react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { formatPrice, formatKilometraje } from '@/lib/utils'
+import { formatPrice } from '@/lib/utils'
 import { Button } from '@/components/ui/Button'
 import { GaleriaVehiculo } from '@/components/GaleriaVehiculo'
 import { VehiculoCard } from '@/components/VehiculoCard'
@@ -50,9 +50,7 @@ export async function generateMetadata({
   if (!vehiculo) return {}
 
   const titulo = `${vehiculo.marca} ${vehiculo.modelo} ${vehiculo.anio}`
-  const descripcion = `${titulo} · ${formatKilometraje(vehiculo.kilometraje)} · ${formatPrice(
-    vehiculo.precio
-  )}. ${NEGOCIO.nombre}, ${NEGOCIO.localidad}.`
+  const descripcion = `${titulo} · ${formatPrice(vehiculo.precio)}. ${NEGOCIO.nombre}, ${NEGOCIO.localidad}.`
   const imagenes = parseImagenes(vehiculo.imagenes)
 
   return {
@@ -107,11 +105,6 @@ export default async function VehiculoDetallePage({
     brand: { '@type': 'Brand', name: vehiculo.marca },
     model: vehiculo.modelo,
     vehicleModelDate: String(vehiculo.anio),
-    mileageFromOdometer: {
-      '@type': 'QuantitativeValue',
-      value: vehiculo.kilometraje,
-      unitCode: 'KMT',
-    },
     color: vehiculo.color,
     fuelType: vehiculo.combustible,
     vehicleTransmission: vehiculo.transmision,
@@ -176,18 +169,6 @@ export default async function VehiculoDetallePage({
           <div className="bg-dark-800 rounded-xl p-6 mb-8 border border-dark-700">
             <h2 className="text-lg font-semibold text-white mb-4">Especificaciones</h2>
             <div className="grid grid-cols-2 gap-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-autosport-red/10 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-autosport-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Kilometraje</p>
-                  <p className="font-medium text-white">{formatKilometraje(vehiculo.kilometraje)}</p>
-                </div>
-              </div>
-
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-autosport-red/10 rounded-lg flex items-center justify-center">
                   <svg className="w-5 h-5 text-autosport-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">

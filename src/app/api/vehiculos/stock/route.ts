@@ -63,8 +63,9 @@ export async function GET(request: NextRequest) {
         precioEntregaTexto: v.precioEntrega ? formatearPrecio(v.precioEntrega) : null,
         cuotaX12: v.cuotaX12,
         cuotaX12Texto: v.cuotaX12 ? formatearPrecio(v.cuotaX12) : null,
-        kilometraje: v.kilometraje,
-        kilometrajeTexto: v.kilometraje === 0 ? '0 km (nuevo)' : `${v.kilometraje.toLocaleString('es-AR')} km`,
+        // Los usados se cargan sin km (0 = sin dato): el bot no debe decir "0 km"
+        kilometraje: v.kilometraje || null,
+        kilometrajeTexto: v.kilometraje ? `${v.kilometraje.toLocaleString('es-AR')} km` : 'A consultar',
         tipo: v.tipo,
         estado: v.estado,
         estadoStock: v.estadoStock,

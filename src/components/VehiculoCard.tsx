@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { formatPrice, formatKilometraje } from '@/lib/utils'
+import { formatPrice } from '@/lib/utils'
 import { waLinkVehiculo } from '@/lib/negocio'
 import { Card } from './ui/Card'
 
@@ -89,9 +89,6 @@ export function VehiculoCard({ vehiculo }: VehiculoCardProps) {
           </span>
           <span className="text-xs bg-dark-600 text-gray-300 px-2 py-1 rounded capitalize">
             {vehiculo.combustible}
-          </span>
-          <span className="text-xs bg-dark-600 text-gray-300 px-2 py-1 rounded">
-            {formatKilometraje(vehiculo.kilometraje)}
           </span>
         </div>
 
